@@ -54,6 +54,11 @@ class RocketTest < Minitest::Test
     assert(rockie.flying?)
   end
 
+  def test_check_new_rocket_with_not_flying_attribute
+    rockie = Rocket.new(flying: false)
+    refute(rockie.flying?)
+  end
+
   def test_check_rocket_flying_when_arguement_not_boolean
     rockie = Rocket.new(flying: "true")
     refute_equal(true, rockie.flying?)
