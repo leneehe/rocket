@@ -99,4 +99,25 @@ class RocketTest < Minitest::Test
     rockie = Rocket.new(flying: "no")
     assert(rockie.land)
   end
+
+  def test_status_is_not_flying_when_default_rocket
+    rockie = Rocket.new(name: "Rocky")
+    expected = "Rocket Rocky is ready for lift off!"
+    actual = rockie.status
+    assert_equal(expected, actual)
+  end
+
+  def test_status_is_flying_when_rocket_flying_set_to_true
+    rockie = Rocket.new(name: "Rocky", flying: true)
+    expected = "Rocket Rocky is flying through the sky!"
+    actual = rockie.status
+    assert_equal(expected, actual)
+  end
+
+  def test_status_is_not_flying_when_rocket_flying_arguement_is_not_boolean
+    rockie = Rocket.new(name: "Rocky", flying: "nope")
+    expected = "Rocket Rocky is ready for lift off!"
+    actual = rockie.status
+    assert_equal(expected, actual)
+  end
 end

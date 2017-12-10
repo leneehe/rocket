@@ -44,7 +44,7 @@ class Rocket
   end
 
   def status
-    if flying?
+    if flying? == true
       return "Rocket #{name} is flying through the sky!"
     else
       return "Rocket #{name} is ready for lift off!"
