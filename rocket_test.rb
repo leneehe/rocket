@@ -84,5 +84,19 @@ class RocketTest < Minitest::Test
     refute(rockie.lift_off)
   end
 
+  def test_can_land_if_rocket_is_flying
+    rockie = Rocket.new
+    rockie.lift_off
+    assert(rockie.land)
+  end
 
+  def test_cannot_land_if_rocket_is_not_flying
+    rockie = Rocket.new
+    refute(rockie.land)
+  end
+
+  def test_land_returns_true_if_flying_is_not_boolean
+    rockie = Rocket.new(flying: "no")
+    assert(rockie.land)
+  end
 end
