@@ -63,4 +63,26 @@ class RocketTest < Minitest::Test
     rockie = Rocket.new(flying: "true")
     refute_equal(true, rockie.flying?)
   end
+
+  def test_lift_off_is_true_when_not_flying
+    rockie = Rocket.new(flying: false)
+    assert(rockie.lift_off)
+  end
+
+  def test_lift_off_is_true_when_default_not_flying
+    rockie = Rocket.new
+    assert(rockie.lift_off)
+  end
+
+  def test_lift_off_is_false_when_flying
+    rockie = Rocket.new(flying: true)
+    refute(rockie.lift_off)
+  end
+
+  def test_lift_off_return_false_if_flying_is_not_boolean
+    rockie = Rocket.new(flying: "yeah")
+    refute(rockie.lift_off)
+  end
+
+
 end
